@@ -14,7 +14,7 @@ app.configure(function(){
 });
 
 app.get('/welcome', function (req, res) {
-  res.send('welcome');
+  res.send('Deves querer deves!!!');
 });
 
 //mysql://b6ebc1830dec6e:3673a20a@us-cdbr-east-05.cleardb.net/heroku_8c7231c4b3f8d12?reconnect=true
