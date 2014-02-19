@@ -19,7 +19,7 @@ app.get('/welcome', function (req, res) {
 
 //mysql://b6ebc1830dec6e:3673a20a@us-cdbr-east-05.cleardb.net/heroku_8c7231c4b3f8d12?reconnect=true
 
-var connection = mysql.createConnection(mysql://b6ebc1830dec6e:3673a20a@us-cdbr-east-05.cleardb.net/heroku_8c7231c4b3f8d12?reconnect=true);
+var connection = mysql.createConnection('mysql://b6ebc1830dec6e:3673a20a@us-cdbr-east-05.cleardb.net/heroku_8c7231c4b3f8d12?reconnect=true');
 
 // var query = 'use shoes';
 // connection.query(query, function(err, rows, fields) {
