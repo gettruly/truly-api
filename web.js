@@ -18,15 +18,19 @@ app.get('/welcome', function (req, res) {
 });
 
 //mysql://b6ebc1830dec6e:3673a20a@us-cdbr-east-05.cleardb.net/heroku_8c7231c4b3f8d12?reconnect=true
+//var connection = mysql.createConnection('mysql://b6ebc1830dec6e:3673a20a@us-cdbr-east-05.cleardb.net/heroku_8c7231c4b3f8d12?reconnect=true');
 
-var connection = mysql.createConnection('mysql://b6ebc1830dec6e:3673a20a@us-cdbr-east-05.cleardb.net/heroku_8c7231c4b3f8d12?reconnect=true');
+var pool = mysql.createPool('mysql://b6ebc1830dec6e:3673a20a@us-cdbr-east-05.cleardb.net/heroku_8c7231c4b3f8d12?reconnect=true');
 
 // var query = 'use shoes';
 // connection.query(query, function(err, rows, fields) {
 //   if (err) throw err;
 // });
 
-connection.connect();
+//connection.connect();
+
+pool.on('connection', function(connection) {
+  connection.query('SET SESSION auto_increment_increment=1')
 
 app.post('/create', function (req, res) {
   if (!req.body) {
@@ -78,6 +82,7 @@ app.post('/create', function (req, res) {
           console.log('Introduced a shoe in new person');
 
           res.send(200);
+          connection.release();
         });
       });
 
@@ -93,12 +98,17 @@ app.post('/create', function (req, res) {
 
         console.log('Introduced a shoe in existing person');
         res.send(200);
+        connection.release();
       });
     }
-
   });
 
 });
+
+});
+
+pool.on('connection', function(connection) {
+  connection.query('SET SESSION auto_increment_increment=1')
 
 app.post('/ask', function (req, res) {
   if (!req.body)
@@ -112,9 +122,11 @@ app.post('/ask', function (req, res) {
     if (err) { res.send(500, err);}
     console.log('Ask');
     res.send(rows);
+    connection.release();
   });
 });
 
+});
 var port = process.env.PORT || 5000;
 app.listen(port, function (){
   console.log('Listening on port:', port);
