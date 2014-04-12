@@ -2,7 +2,7 @@
   "name": "truly-api",
   "version": "0.0.0",
   "description": "Action                      HTTP method  Relative URI",
-  "main": "db.js",
+  "main": "server.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "start": "node server.js"
@@ -16,5 +16,8 @@
   "bugs": {
     "url": "https://github.com/gettruly/truly-api/issues"
   },
-  "homepage": "https://github.com/gettruly/truly-api"
+  "homepage": "https://github.com/gettruly/truly-api",
+  "dependencies": {
+    "express": "^4.0.0"
+  }
 }
