@@ -13,7 +13,7 @@ var cors = require('cors');
 var bodyParser = require('body-parser');
 
 // CONFIG
-app.use(logger());
+app.use(logger('dev'));
 app.use(cors());
 app.use(bodyParser());
 
@@ -22,9 +22,11 @@ app.use(bodyParser());
 //   if (err) throw err;
 // });
 
+var donors = require('./lib/donors');
 var shoes = require('./lib/shoes');
 var orgs = require('./lib/organizations');
 
+app.use(donors);
 app.use(shoes);
 app.use(orgs);
 
@@ -32,7 +34,7 @@ app.get('/', function (res, req) {
   res.send('Truly alive!');
 })
 
-app.get('/*', function (res, req) {
+app.get('/*', function (req, res) {
   res.send(404);
 })
 
