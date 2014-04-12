@@ -1,0 +1,20 @@
+{
+  "name": "truly-api",
+  "version": "0.0.0",
+  "description": "Action                      HTTP method  Relative URI",
+  "main": "db.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node server.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git://github.com/gettruly/truly-api.git"
+  },
+  "author": "Pedro Afonso <mail@pedroafonso.net>",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/gettruly/truly-api/issues"
+  },
+  "homepage": "https://github.com/gettruly/truly-api"
+}
