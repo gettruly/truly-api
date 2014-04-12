@@ -8,10 +8,12 @@ var app = express();
 var port = process.env.PORT || 5000;
 
 // Middlewares
+var logger = require('morgan');
 var cors = require('cors');
 var bodyParser = require('body-parser');
 
 // CONFIG
+app.use(logger());
 app.use(cors());
 app.use(bodyParser());
 
@@ -19,8 +21,6 @@ app.use(bodyParser());
 // connection.query(query, function(err, rows, fields) {
 //   if (err) throw err;
 // });
-
-var connection = require('db');
 
 var shoes = require('./lib/shoes');
 var orgs = require('./lib/organizations');

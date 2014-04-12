@@ -1,4 +1,4 @@
-var config = require('konphyg')(__dirname + '../config');
+var config = require('konphyg')(__dirname + '/config');
 
 var mysql = require('mysql');
 var mysqlConf = config('mysql');
