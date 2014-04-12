@@ -2,6 +2,19 @@
 
 Action                      HTTP method  Relative URI
 
+
+
+##Donors
+
+Description                     | Method | Endpoint
+------------------------------- | ------ | -----------------
+Get a list of all donors | GET    | `/api/donors`
+Get a donor by ID        | GET    | `/api/donors/id`
+Create a new donor       | POST   | `/api/donors`
+Update a donor           | PUT    | `/api/donor/id`
+Delete a donor           | DELETE | `/api/donors/id`
+
+
 ##Shoes
 
 Description                     | Method | Endpoint
