@@ -17,11 +17,6 @@ app.use(logger('dev'));
 app.use(cors());
 app.use(bodyParser());
 
-// var query = 'use shoes';
-// connection.query(query, function(err, rows, fields) {
-//   if (err) throw err;
-// });
-
 var donors = require('./lib/donors');
 var shoes = require('./lib/shoes');
 var orgs = require('./lib/organizations');
