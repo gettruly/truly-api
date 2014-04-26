@@ -1,0 +1,52 @@
+# Dump of table donors
+# ------------------------------------------------------------
+
+DROP TABLE IF EXISTS `donors`;
+
+CREATE TABLE `donors` (
+  `id` smallint(5) unsigned NOT NULL AUTO_INCREMENT,
+  `name` varchar(30) DEFAULT NULL,
+  `email` varchar(30) DEFAULT NULL,
+  `phone` int(9) DEFAULT NULL,
+  PRIMARY KEY (`id`),
+  KEY `idx_email` (`email`)
+) ENGINE=InnoDB AUTO_INCREMENT=5 DEFAULT CHARSET=latin1;
+
+# Dump of table organizations
+# ------------------------------------------------------------
+
+DROP TABLE IF EXISTS `organizations`;
+
+CREATE TABLE `organizations` (
+  `id` smallint(5) unsigned NOT NULL AUTO_INCREMENT,
+  `name` varchar(100) DEFAULT NULL,
+  `phone` int(9) DEFAULT NULL,
+  `email` varchar(30) DEFAULT NULL,
+  `website` text,
+  `address` text,
+  `city` varchar(80) DEFAULT NULL,
+  `country` varchar(80) DEFAULT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=latin1;
+
+# Dump of table shoes
+# ------------------------------------------------------------
+
+DROP TABLE IF EXISTS `shoes`;
+
+CREATE TABLE `shoes` (
+  `ref` int(10) unsigned NOT NULL AUTO_INCREMENT,
+  `donorsid` smallint(5) unsigned NOT NULL,
+  `organizationid` smallint(5) unsigned DEFAULT NULL,
+  `img` blob,
+  `gender` char(10) DEFAULT NULL,
+  `size` char(10) DEFAULT NULL,
+  `type` char(10) DEFAULT NULL,
+  `received_date` datetime DEFAULT NULL,
+  `sent_date` datetime DEFAULT NULL,
+  PRIMARY KEY (`ref`),
+  KEY `FK_shoe` (`donorsid`),
+  KEY `FK_organization` (`organizationid`),
+  CONSTRAINT `FK_organization` FOREIGN KEY (`organizationid`) REFERENCES `organization` (`id`) ON DELETE CASCADE ON UPDATE CASCADE,
+  CONSTRAINT `FK_shoe` FOREIGN KEY (`donorsid`) REFERENCES `donors` (`id`) ON DELETE CASCADE ON UPDATE CASCADE
+) ENGINE=InnoDB AUTO_INCREMENT=10 DEFAULT CHARSET=latin1;
