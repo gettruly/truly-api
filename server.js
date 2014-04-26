@@ -28,7 +28,7 @@ app.use(donors);
 app.use(shoes);
 app.use(orgs);
 
-app.get('/', function (res, req) {
+app.get('/', function (req, res) {
   res.send('Truly alive!');
 })
 
