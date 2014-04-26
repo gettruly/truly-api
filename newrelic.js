@@ -8,7 +8,7 @@ exports.config = {
   /**
    * Array of application names.
    */
-  app_name : ['truly-ws'],
+  app_name : ['truly-api'],
   /**
    * Your New Relic license key.
    */
