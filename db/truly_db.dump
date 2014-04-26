@@ -1,6 +1,8 @@
 # Dump of table donors
 # ------------------------------------------------------------
 
+DROP TABLE IF EXISTS `shoes`;
+
 DROP TABLE IF EXISTS `donors`;
 
 CREATE TABLE `donors` (
@@ -38,15 +40,15 @@ CREATE TABLE `shoes` (
   `ref` int(10) unsigned NOT NULL AUTO_INCREMENT,
   `donorsid` smallint(5) unsigned NOT NULL,
   `organizationid` smallint(5) unsigned DEFAULT NULL,
-  `img` blob,
+  `img` blob DEFAULT NULL,
   `gender` char(10) DEFAULT NULL,
   `size` char(10) DEFAULT NULL,
   `type` char(10) DEFAULT NULL,
   `received_date` datetime DEFAULT NULL,
   `sent_date` datetime DEFAULT NULL,
   PRIMARY KEY (`ref`),
-  KEY `FK_shoe` (`donorsid`),
-  KEY `FK_organization` (`organizationid`),
-  CONSTRAINT `FK_organization` FOREIGN KEY (`organizationid`) REFERENCES `organization` (`id`) ON DELETE CASCADE ON UPDATE CASCADE,
-  CONSTRAINT `FK_shoe` FOREIGN KEY (`donorsid`) REFERENCES `donors` (`id`) ON DELETE CASCADE ON UPDATE CASCADE
+  KEY `FK_shoes` (`donorsid`),
+  KEY `FK_organizations` (`organizationid`),
+  CONSTRAINT `FK_organizations` FOREIGN KEY (`organizationid`) REFERENCES `organizations` (`id`) ON DELETE CASCADE ON UPDATE CASCADE,
+  CONSTRAINT `FK_shoes` FOREIGN KEY (`donorsid`) REFERENCES `donors` (`id`) ON DELETE CASCADE ON UPDATE CASCADE
 ) ENGINE=InnoDB AUTO_INCREMENT=10 DEFAULT CHARSET=latin1;
