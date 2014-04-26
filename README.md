@@ -34,3 +34,11 @@ Get a organization by ID        | GET    | `/api/organizations/id`
 Create a new organization       | POST   | `/api/organizations`
 Update a organization           | PUT    | `/api/organization/id`
 Delete a organization           | DELETE | `/api/organizations/id`
+
+
+##CURL EXAMPLES
+⁄/ CREATE DONOR
+curl -X POST http://localhost:5000/api/donors -d '{"name":"JP", "email":"maria@gmail.com", "phone": "987654321"}' -H "content-type: application/json"
+
+⁄/ CREATE SHOES
+ curl -X POST http://localhost:5000/api/shoes -d '{"type":"sapatilha","gender":"m","size":45, "img":"HHHHHHH1X", "donorsid":"4"}' -H "content-type: application/json"
