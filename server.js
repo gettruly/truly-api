@@ -1,11 +1,10 @@
 var express = require('express');
+var http = require('http');
 
 var app = express();
 
 // var logfmt = require("logfmt");
 // app.use(logfmt.requestLogger());
-
-var port = process.env.PORT || 5000;
 
 // Middlewares
 var logger = require('morgan');
@@ -25,14 +24,32 @@ app.use(donors);
 app.use(shoes);
 app.use(orgs);
 
-app.get('/', function (res, req) {
-  res.send('Truly alive!');
+app.get('/', function (req, res) {
+  res.send(200, 'Truly alive');
 })
 
 app.get('/*', function (req, res) {
   res.send(404);
 })
 
-app.listen(port, function() {
-  console.log('Listening on port:', port);
-});
+var server;
+exports.port = process.env.PORT || 8080;
+exports.start = start;
+exports.stop = stop;
+
+function start(cb) {
+  var port = exports.port;
+  server = http.createServer(app);
+  server.listen(port, function() {
+    if (cb) return cb();
+    console.log('Listening on port', port, '...');
+  });
+}
+
+function stop(cb) {
+  if (! server && cb) return cb();
+  server.close(cb);
+}
+
+if (require.main == module)
+  start();
