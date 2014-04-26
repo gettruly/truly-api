@@ -1,10 +1,13 @@
+require('newrelic');
+
 var express = require('express');
 var http = require('http');
 
 var app = express();
 
-// var logfmt = require("logfmt");
-// app.use(logfmt.requestLogger());
+// For Heroku
+var logfmt = require("logfmt");
+app.use(logfmt.requestLogger());
 
 // Middlewares
 var logger = require('morgan');
