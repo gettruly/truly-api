@@ -8,7 +8,7 @@ DROP TABLE IF EXISTS `donors`;
 CREATE TABLE `donors` (
   `id` smallint(5) unsigned NOT NULL AUTO_INCREMENT,
   `name` varchar(30) DEFAULT NULL,
-  `email` varchar(30) DEFAULT NULL,
+  `email` varchar(30) DEFAULT NULL UNIQUE,
   `phone` int(9) DEFAULT NULL,
   PRIMARY KEY (`id`),
   KEY `idx_email` (`email`)
