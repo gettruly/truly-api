@@ -18,11 +18,12 @@
   },
   "homepage": "https://github.com/gettruly/truly-api",
   "dependencies": {
-    "express": "^4.0.0",
+    "express": "~4.1.0",
     "cors": "^2.2.0",
     "body-parser": "^1.0.1",
     "mysql": "^2.1.1",
     "konphyg": "^1.4.0",
-    "morgan": "^1.0.0"
+    "morgan": "^1.0.0",
+    "logfmt": "~1.1.2"
   }
 }

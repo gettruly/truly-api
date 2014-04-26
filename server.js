@@ -1,9 +1,12 @@
+require('newrelic');
+
 var express = require('express');
 
 var app = express();
 
-// var logfmt = require("logfmt");
-// app.use(logfmt.requestLogger());
+// For Heroku
+var logfmt = require("logfmt");
+app.use(logfmt.requestLogger());
 
 var port = process.env.PORT || 5000;
 
