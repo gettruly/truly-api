@@ -10,7 +10,7 @@ var shoe1;
 createDonor();
 
 function createDonor () {
-  test('Create New Donor', function (t) {
+  test('Creating New Donor...', function (t) {
 
     var opts = {
       method: 'POST',
@@ -23,8 +23,9 @@ function createDonor () {
         throw err;
       }
       donor1.id = res.body.id;
+      console.log('created doner#', donor1.id);
 
-      t.ok( donor1.id !== undefined, '->New Donor Created with new ID');
+      t.ok( donor1.id !== undefined, '->Donor Created with new ID!');
       createSameDonor();
       t.end();
     })
@@ -32,7 +33,7 @@ function createDonor () {
 }
 
 function createSameDonor () {
-  test('Create Same Donor', function (t) {
+  test('Creating Same Donor...', function (t) {
 
     var opts = {
       method: 'POST',
@@ -45,7 +46,7 @@ function createSameDonor () {
         throw err;
       }
 
-      t.ok( res.statusCode === 500, '->Same donor not created');
+      t.ok( res.statusCode === 500, '->Same donor not created!');
       getDonor();
       t.end();
 
@@ -55,10 +56,10 @@ function createSameDonor () {
 
 function getDonor() {
 
-  test('Get Donor', function (t) {
+  test('Get Donor by ID...', function (t) {
 
     var opts = {
-      url: 'http://localhost:' + server.port + '/api/donors/' + donor1.email,
+      url: 'http://localhost:' + server.port + '/api/donors/' + donor1.id,
       json: true  
     }
     
@@ -67,7 +68,7 @@ function getDonor() {
         throw err;
       }
 
-      t.ok( res.body[0].id === donor1.id, '->Got correct donor id by email');
+      t.ok( res.body.id === donor1.id, '->Got correct donor by ID!');
       insertShoe();
       t.end();
     })
@@ -76,9 +77,9 @@ function getDonor() {
 
 function insertShoe() {
 
-  test('Insert Shoe', function (t) {
+  test('Inserting Shoe whithout organization...', function (t) {
 
-     shoe1 = new Shoes(donor1);
+    shoe1 = new Shoes(donor1);
 
     var opts = {
       method: 'POST',
@@ -91,12 +92,35 @@ function insertShoe() {
         t.end();
         throw err;
       }
-      console.log(res.body)
 
-      t.ok( res.body.id !== undefined, '->New shoe Created with new ID');
+      shoe1.ref = res.body.id
+
+      t.ok( res.body.id !== undefined, '->New shoe Created with new REF!');
+      t.end();
+      getShoe();
+    })
+  })
+}
+
+function getShoe(){
+
+  test('Get shoe by REF...', function (t) {
+
+    var opts = {
+      url: 'http://localhost:' + server.port + '/api/shoes/' + shoe1.ref,
+      json: true  
+    }
+    
+    request.get(opts, function (err, res, body) {
+      if (err) {
+        throw err;
+      }
+      t.ok( res.body.ref === shoe1.ref, '->Got correct shoe ref!');
+      t.ok( res.body.donorsid === donor1.id, '->Shoe donor is correct!');
       t.end();
     })
   })
+
 }
 
 function Donor () {
@@ -111,14 +135,11 @@ function Shoes (donor) {
   var original_image = fs.readFileSync(join(__dirname,'img', 'shoes.jpg'));
   var base64Image = new Buffer(original_image, 'binary').toString('base64');
   this.img = base64Image;
-
-  this.donorsid = donor.id;
-  this.organizationid = 123;
+  this.donorsid = donor.id.toString();
   this.gender = (Math.random() >= 0.5) ? 'M' : 'F';
   this.size = Math.floor(Math.random()*100);
   this.type = (Math.random() >= 0.5) ? 'sandalia' : 'sapatilha';
-  this.received_date = Date();
-  this.sent_date = '';
+  this.received_date = 'hjjhgjgj';
 }
 
 function getRandomS () {

@@ -6,22 +6,22 @@ Action                      HTTP method  Relative URI
 
 ##Donors
 
-Description                     | Method | Endpoint | req | res
+Description                     | Method | Endpoint | params | res.body
 ------------------------------- | ------ | ---------|-----|---
-Get a list of all donors | GET    | `/api/donors`    |
-Get a donor by ID        | GET    | `/api/donors/:id` | 
-Create a new donor       | POST   | `/api/donors`    | email, name, phone | id
+Get a list of all donors | GET    | `/api/donors`     |
+Get a donor by ID        | GET    | `/api/donors/:id` | | email, name, phone 
+Create a new donor       | POST   | `/api/donors`     | email, name, phone | id
 Update a donor           | PUT    | `/api/donor/:id`  |
 Delete a donor           | DELETE | `/api/donors/:id` |
 
 
 ##Shoes
 
-Description                     | Method | Endpoint
-------------------------------- | ------ | -----------------
+Description                     | Method | Endpoint | params | res.body
+------------------------------- | ------ | ---------|--------|----
 Get a list of all shoes         | GET    | `/api/shoes`
-Get a project by ID             | GET    | `/api/shoes/id`
-Create a new shoe               | POST   | `/api/shoes`
+Get a shoe by ID                | GET    | `/api/shoes/id`   | | organizationid, donorsid, img, size, type, gender 
+Create a new shoe               | POST   | `/api/shoes` | organizationid, donorsid, img, size, type, gender | id
 Update a shoe                   | PUT    | `/api/shoe/id`
 Delete a shoe                   | DELETE | `/api/shoes/id`
 

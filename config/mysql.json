@@ -1,6 +1,7 @@
 {
-  "host": "127.4.81.2",
-  "user": "adminkIPKeSV",
-  "password": "jg5QUnYeVke8",
-  "database": "trulyapi"
+  "host": "localhost",
+  "user": "user",
+  "password": "pass",
+  "database": "db",
+  "port": 5000
 }

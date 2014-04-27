@@ -17,8 +17,7 @@ var bodyParser = require('body-parser');
 // CONFIG
 app.use(logger('dev'));
 app.use(cors());
-// app.use(bodyParser());
-app.use(bodyParser({limit: '50mb'}));
+app.use(bodyParser({limit: '50mb'})); // no limit!!
 
 var donors = require('./lib/donors');
 var shoes = require('./lib/shoes');
@@ -29,7 +28,7 @@ app.use(shoes);
 app.use(orgs);
 
 app.get('/', function (req, res) {
-  res.send('Truly alive!');
+  res.send(200, 'Truly alive');
 })
 
 app.get('/*', function (req, res) {
