@@ -13,11 +13,11 @@ var connection = mysql.createConnection({
 });
 */
 var connection = mysql.createConnection({
-  host     : process.env.OPENSHIFT_MYSQL_DB_HOST,
-  user     : process.env.OPENSHIFT_MYSQL_DB_USERNAME,
-  pass     : process.env.OPENSHIFT_MYSQL_DB_PASSWORD,
-  port     : process.env.OPENSHIFT_MYSQL_DB_PORT,
-  database : 'trulyapi'
+   host: process.env.OPENSHIFT_MYSQL_DB_HOST,
+   port: process.env.OPENSHIFT_MYSQL_DB_PORT,
+   user: process.env.OPENSHIFT_MYSQL_DB_USERNAME,
+   password: process.env.OPENSHIFT_MYSQL_DB_PASSWORD,
+   database: process.env.OPENSHIFT_APP_NAME,
  });
 
 
