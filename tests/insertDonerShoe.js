@@ -23,6 +23,7 @@ function createDonor () {
         throw err;
       }
       donor1.id = res.body.id;
+      console.log('created doner#', donor1.id);
 
       t.ok( donor1.id !== undefined, '->New Donor Created with new ID');
       createSameDonor();
@@ -55,10 +56,10 @@ function createSameDonor () {
 
 function getDonor() {
 
-  test('Get Donor', function (t) {
+  test('Get Donor by id', function (t) {
 
     var opts = {
-      url: 'http://localhost:' + server.port + '/api/donors/' + donor1.email,
+      url: 'http://localhost:' + server.port + '/api/donors/' + donor1.id,
       json: true  
     }
     
@@ -67,7 +68,7 @@ function getDonor() {
         throw err;
       }
 
-      t.ok( res.body[0].id === donor1.id, '->Got correct donor id by email');
+      t.ok( res.body.id === donor1.id, '->Got correct donor by id');
       insertShoe();
       t.end();
     })
@@ -76,9 +77,9 @@ function getDonor() {
 
 function insertShoe() {
 
-  test('Insert Shoe', function (t) {
+  test('Insert Shoe whithout organization', function (t) {
 
-     shoe1 = new Shoes(donor1);
+    shoe1 = new Shoes(donor1);
 
     var opts = {
       method: 'POST',
@@ -91,12 +92,36 @@ function insertShoe() {
         t.end();
         throw err;
       }
-      console.log(res.body)
+
+      shoe1.ref = res.body.id
 
       t.ok( res.body.id !== undefined, '->New shoe Created with new ID');
       t.end();
+      getShoe();
     })
   })
+}
+
+function getShoe(){
+
+  test('Get shoe', function (t) {
+
+    var opts = {
+      url: 'http://localhost:' + server.port + '/api/shoes/' + shoe1.ref,
+      json: true  
+    }
+    
+    request.get(opts, function (err, res, body) {
+      if (err) {
+        throw err;
+      }
+      console.log(res.body.donnersid, donor1.id)
+      t.ok( res.body.ref === shoe1.ref, '->Got correct shoe id');
+      t.ok( res.body.donorsid === donor1.id, '->Shoe donor is correct');
+      t.end();
+    })
+  })
+
 }
 
 function Donor () {
@@ -111,14 +136,11 @@ function Shoes (donor) {
   var original_image = fs.readFileSync(join(__dirname,'img', 'shoes.jpg'));
   var base64Image = new Buffer(original_image, 'binary').toString('base64');
   this.img = base64Image;
-
-  this.donorsid = donor.id;
-  this.organizationid = 123;
+  this.donorsid = donor.id.toString();
   this.gender = (Math.random() >= 0.5) ? 'M' : 'F';
   this.size = Math.floor(Math.random()*100);
   this.type = (Math.random() >= 0.5) ? 'sandalia' : 'sapatilha';
-  this.received_date = Date();
-  this.sent_date = '';
+  this.received_date = 'hjjhgjgj';
 }
 
 function getRandomS () {
