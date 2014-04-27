@@ -4,7 +4,7 @@
   "description": "Truly API",
   "main": "server.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1",
+    "test": "node tests/*.js",
     "start": "node server.js"
   },
   "repository": {
@@ -24,11 +24,9 @@
     "mysql": "^2.1.1",
     "konphyg": "^1.4.0",
     "morgan": "^1.0.0",
-<<<<<<< HEAD
     "tap": "^0.4.8",
-    "request": "^2.34.0"
-=======
-    "logfmt": "~1.1.2"
->>>>>>> a61359f8f95366f7c2cb7d60edd57ae8cac79e18
+    "request": "^2.34.0",
+    "logfmt": "~1.1.2",
+    "path": "^0.4.9"
   }
 }

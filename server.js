@@ -17,7 +17,8 @@ var bodyParser = require('body-parser');
 // CONFIG
 app.use(logger('dev'));
 app.use(cors());
-app.use(bodyParser());
+// app.use(bodyParser());
+app.use(bodyParser({limit: '50mb'}));
 
 var donors = require('./lib/donors');
 var shoes = require('./lib/shoes');
@@ -50,8 +51,8 @@ function start(cb) {
 }
 
 function stop(cb) {
-  if (! server && cb) return cb();
   server.close(cb);
+  if (! server && cb) return cb();
 }
 
 if (require.main == module)
