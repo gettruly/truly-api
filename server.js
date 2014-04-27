@@ -36,7 +36,7 @@ app.get('/*', function (req, res) {
 })
 
 var server;
-exports.address = process.env.OPENSHIFT_NODEJS_IP || 127.0.0.1;
+exports.ipaddress = process.env.OPENSHIFT_NODEJS_IP || 127.0.0.1;
 exports.port = process.env.OPENSHIFT_NODEJS_PORT || 8080;
 exports.start = start;
 exports.stop = stop;
@@ -44,7 +44,7 @@ exports.stop = stop;
 function start(cb) {
   var port = exports.port;
   server = http.createServer(app);
-  server.listen(port, function() {
+  server.listen(port, ipaddress, function() {
     if (cb) return cb();
     console.log('Listening on port', port, '...');
   });
