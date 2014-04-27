@@ -1,4 +1,4 @@
-require('newrelic');
+// require('newrelic');
 
 var express = require('express');
 var http = require('http');
@@ -29,7 +29,11 @@ app.use(shoes);
 app.use(orgs);
 
 app.get('/', function (req, res) {
+<<<<<<< HEAD
+  res.send('Truly alive!');
+=======
   res.send(200, 'Truly alive');
+>>>>>>> 6a4fff5b12cd5ac5ac58ac7b392ce4eca1d153ce
 })
 
 app.get('/*', function (req, res) {

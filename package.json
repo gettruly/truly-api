@@ -19,14 +19,15 @@
   "homepage": "https://github.com/gettruly/truly-api",
   "dependencies": {
     "express": "~4.1.0",
-    "cors": "^2.2.0",
-    "body-parser": "^1.0.1",
-    "mysql": "^2.1.1",
-    "konphyg": "^1.4.0",
-    "morgan": "^1.0.0",
-    "tap": "^0.4.8",
-    "request": "^2.34.0",
-    "logfmt": "~1.1.2",
-    "path": "^0.4.9"
+    "cors": ">=2.2.0",
+    "body-parser": ">=1.0.1",
+    "mysql": ">=2.1.1",
+    "konphyg": ">=1.4.0",
+    "morgan": ">=1.0.0",
+    "logfmt": ">=1.1.2",
+    "newrelic": ">=0.9",
+    "tap": ">=0.4.8",
+    "request": ">=2.34.0",
+    "path": ">=0.4.9"
   }
 }
