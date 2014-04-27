@@ -18,7 +18,7 @@ Delete a donor           | DELETE | `/api/donors/:id` |
 ##Shoes
 
 Description                     | Method | Endpoint | params | res.body
-------------------------------- | ------ | ---------|--------
+------------------------------- | ------ | ---------|--------|-
 Get a list of all shoes         | GET    | `/api/shoes`
 Get a shoe by ID             | GET    | `/api/shoes/id` || organizationid, donorsid, img, size, type, gender 
 Create a new shoe               | POST   | `/api/shoes` | organizationid, donorsid, img, size, type, gender | id
