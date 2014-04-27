@@ -36,7 +36,8 @@ app.get('/*', function (req, res) {
 })
 
 var server;
-exports.port = process.env.PORT || 8080;
+exports.ipaddress = process.env.OPENSHIFT_NODEJS_IP || 127.0.0.1;
+exports.port = process.env.OPENSHIFT_NODEJS_PORT || 8080;
 exports.start = start;
 exports.stop = stop;
 
