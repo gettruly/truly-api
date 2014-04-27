@@ -43,7 +43,7 @@ exports.ipaddress = process.env.OPENSHIFT_NODEJS_IP;
    console.warn('No OPENSHIFT_NODEJS_IP var, using 127.0.0.1');
    self.ipaddress = "127.0.0.1";
   };
-exports.port = process.env.OPENSHIFT_NODEJS_PORT || 8080;
+exports.port = process.env.OPENSHIFT_NODEJS_PORT || 5000;
 exports.start = start;
 exports.stop = stop;
 
