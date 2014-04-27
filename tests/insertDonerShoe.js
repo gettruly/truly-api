@@ -10,7 +10,7 @@ var shoe1;
 createDonor();
 
 function createDonor () {
-  test('Create New Donor', function (t) {
+  test('Creating New Donor...', function (t) {
 
     var opts = {
       method: 'POST',
@@ -25,7 +25,7 @@ function createDonor () {
       donor1.id = res.body.id;
       console.log('created doner#', donor1.id);
 
-      t.ok( donor1.id !== undefined, '->New Donor Created with new ID');
+      t.ok( donor1.id !== undefined, '->Donor Created with new ID!');
       createSameDonor();
       t.end();
     })
@@ -33,7 +33,7 @@ function createDonor () {
 }
 
 function createSameDonor () {
-  test('Create Same Donor', function (t) {
+  test('Creating Same Donor...', function (t) {
 
     var opts = {
       method: 'POST',
@@ -46,7 +46,7 @@ function createSameDonor () {
         throw err;
       }
 
-      t.ok( res.statusCode === 500, '->Same donor not created');
+      t.ok( res.statusCode === 500, '->Same donor not created!');
       getDonor();
       t.end();
 
@@ -56,7 +56,7 @@ function createSameDonor () {
 
 function getDonor() {
 
-  test('Get Donor by id', function (t) {
+  test('Get Donor by ID...', function (t) {
 
     var opts = {
       url: 'http://localhost:' + server.port + '/api/donors/' + donor1.id,
@@ -68,7 +68,7 @@ function getDonor() {
         throw err;
       }
 
-      t.ok( res.body.id === donor1.id, '->Got correct donor by id');
+      t.ok( res.body.id === donor1.id, '->Got correct donor by ID!');
       insertShoe();
       t.end();
     })
@@ -77,7 +77,7 @@ function getDonor() {
 
 function insertShoe() {
 
-  test('Insert Shoe whithout organization', function (t) {
+  test('Inserting Shoe whithout organization...', function (t) {
 
     shoe1 = new Shoes(donor1);
 
@@ -95,7 +95,7 @@ function insertShoe() {
 
       shoe1.ref = res.body.id
 
-      t.ok( res.body.id !== undefined, '->New shoe Created with new ID');
+      t.ok( res.body.id !== undefined, '->New shoe Created with new REF!');
       t.end();
       getShoe();
     })
@@ -104,7 +104,7 @@ function insertShoe() {
 
 function getShoe(){
 
-  test('Get shoe', function (t) {
+  test('Get shoe by REF...', function (t) {
 
     var opts = {
       url: 'http://localhost:' + server.port + '/api/shoes/' + shoe1.ref,
@@ -115,9 +115,8 @@ function getShoe(){
       if (err) {
         throw err;
       }
-      console.log(res.body.donnersid, donor1.id)
-      t.ok( res.body.ref === shoe1.ref, '->Got correct shoe id');
-      t.ok( res.body.donorsid === donor1.id, '->Shoe donor is correct');
+      t.ok( res.body.ref === shoe1.ref, '->Got correct shoe ref!');
+      t.ok( res.body.donorsid === donor1.id, '->Shoe donor is correct!');
       t.end();
     })
   })
