@@ -7,12 +7,7 @@ var join = require('Path').join;
 var donor1 = new Donor();
 var shoe1;
 
-
-server.start(onStart);
-function onStart() {
-
-  createDonor();
-}
+createDonor();
 
 function createDonor () {
   test('Create New Donor', function (t) {
@@ -93,11 +88,12 @@ function insertShoe() {
 
     request(opts, function (err, res, body) {
       if (err) {
+        t.end();
         throw err;
       }
+      console.log(res.body)
 
       t.ok( res.body.id !== undefined, '->New shoe Created with new ID');
-      server.stop();
       t.end();
     })
   })
