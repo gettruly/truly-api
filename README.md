@@ -35,6 +35,10 @@ Create a new organization       | POST   | `/api/organizations`
 Update a organization           | PUT    | `/api/organization/id`
 Delete a organization           | DELETE | `/api/organizations/id`
 
+##Test suit
+
+Fire the server with `node server.js` and then do `npm test`.
+
 
 ##CURL EXAMPLES
 ⁄/ CREATE DONOR
