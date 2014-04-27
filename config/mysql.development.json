@@ -1,6 +1,7 @@
 {
   "host": "localhost",
-  "user": "truly",
-  "password": "truly",
-  "database": "truly"
+  "user": "root",
+  "password": "root",
+  "database": "truly",
+  "port": 8889
 }
