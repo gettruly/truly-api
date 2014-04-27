@@ -20,10 +20,10 @@ Delete a donor           | DELETE | `/api/donors/:id` |
 Description                     | Method | Endpoint | params | res.body
 ------------------------------- | ------ | ---------|--------|---
 Get a list of all shoes         | GET    | `/api/shoes`
-Get a shoe by ID                | GET    | `/api/shoes/id`   | | organizationid, donorsid, img, size, type, gender, received_date, sent_date 
-Create a new shoe               | POST   | `/api/shoes` | organizationid, donorsid, img, size, type, gender, received_date, sent_date | id
-Update a shoe                   | PUT    | `/api/shoe/id`
-Delete a shoe                   | DELETE | `/api/shoes/id`
+Get a shoe by ref                | GET    | `/api/shoes/ref`   | | organizationid, donorsid, img, size, type, gender, received_date, sent_date 
+Create a new shoe               | POST   | `/api/shoes` | organizationid, donorsid, img, size, type, gender, received_date, sent_date | ref
+Update a shoe                   | PUT    | `/api/shoe/ref`
+Delete a shoe                   | DELETE | `/api/shoes/ref`
 
 ##Organizations
 
