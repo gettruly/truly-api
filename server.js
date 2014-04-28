@@ -36,14 +36,30 @@ app.get('/*', function (req, res) {
 })
 
 var server;
-exports.port = process.env.PORT || 8080;
+exports.ipaddress = process.env.OPENSHIFT_NODEJS_IP;
+  if (typeof exports.ipaddress == "undefined") {
+   // Log errors on OpenShift but continue w/ 127.0.0.1 - this
+   // allows us to run/test the app locally.
+   console.warn('No OPENSHIFT_NODEJS_IP var, using 127.0.0.1');
+   exports.ipaddress = "127.0.0.1";
+  };
+  
+exports.port = process.env.OPENSHIFT_NODEJS_PORT;
+  if (typeof exports.port == "undefined") {
+   // Log errors on OpenShift but continue w/ 127.0.0.1 - this
+   // allows us to run/test the app locally.
+   console.warn('No OPENSHIFT_NODEJS_PORT var, using 5000');
+   exports.port = 8081;
+  };
+
 exports.start = start;
 exports.stop = stop;
 
 function start(cb) {
+  var ipaddress = exports.ipaddress;
   var port = exports.port;
   server = http.createServer(app);
-  server.listen(port, function() {
+  server.listen(port, ipaddress, function() {
     if (cb) return cb();
     console.log('Listening on port', port, '...');
   });
