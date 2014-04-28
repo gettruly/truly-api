@@ -12,7 +12,7 @@ CREATE TABLE `donors` (
   `phone` int(9) DEFAULT NULL,
   PRIMARY KEY (`id`),
   KEY `idx_email` (`email`)
-) ENGINE=InnoDB AUTO_INCREMENT=5 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=0 DEFAULT CHARSET=utf8;
 
 # Dump of table organizations
 # ------------------------------------------------------------
@@ -29,7 +29,7 @@ CREATE TABLE `organizations` (
   `city` varchar(80) DEFAULT NULL,
   `country` varchar(80) DEFAULT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=0 DEFAULT CHARSET=utf8;
 
 # Dump of table shoes
 # ------------------------------------------------------------
@@ -51,4 +51,4 @@ CREATE TABLE `shoes` (
   KEY `FK_organizations` (`organizationid`),
   CONSTRAINT `FK_organizations` FOREIGN KEY (`organizationid`) REFERENCES `organizations` (`id`) ON DELETE CASCADE ON UPDATE CASCADE,
   CONSTRAINT `FK_shoes` FOREIGN KEY (`donorsemail`) REFERENCES `donors` (`email`) ON DELETE CASCADE ON UPDATE CASCADE
-) ENGINE=InnoDB AUTO_INCREMENT=10 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=0 DEFAULT CHARSET=utf8;
