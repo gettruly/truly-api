@@ -93,9 +93,9 @@ function insertShoe() {
         throw err;
       }
 
-      shoe1.ref = res.body.id
+      shoe1.ref = res.body.ref;
 
-      t.ok( res.body.id !== undefined, '->New shoe Created with new REF!');
+      t.ok( res.body.ref !== undefined, '->New shoe Created with new REF!');
       t.end();
       getShoe();
     })
@@ -114,9 +114,9 @@ function getShoe(){
     request.get(opts, function (err, res, body) {
       if (err) {
         throw err;
-      }
+      } 
       t.ok( res.body.ref === shoe1.ref, '->Got correct shoe ref!');
-      t.ok( res.body.donorsid === donor1.id, '->Shoe donor is correct!');
+      t.ok( res.body.donorsemail === donor1.email, '->Shoe donor is correct!');
       t.end();
     })
   })
@@ -135,7 +135,7 @@ function Shoes (donor) {
   var original_image = fs.readFileSync(join(__dirname,'img', 'shoes.jpg'));
   var base64Image = new Buffer(original_image, 'binary').toString('base64');
   this.img = base64Image;
-  this.donorsid = donor.id.toString();
+  this.donorsemail = donor.email.toString();
   this.gender = (Math.random() >= 0.5) ? 'M' : 'F';
   this.size = Math.floor(Math.random()*100);
   this.type = (Math.random() >= 0.5) ? 'sandalia' : 'sapatilha';
