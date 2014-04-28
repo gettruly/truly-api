@@ -8,7 +8,7 @@ DROP TABLE IF EXISTS `donors`;
 CREATE TABLE `donors` (
   `id` smallint(5) unsigned NOT NULL AUTO_INCREMENT,
   `name` varchar(30) DEFAULT NULL,
-  `email` varchar(30) DEFAULT NULL UNIQUE,
+  `email` varchar(30) unsigned NULL UNIQUE,
   `phone` int(9) DEFAULT NULL,
   PRIMARY KEY (`id`),
   KEY `idx_email` (`email`)
@@ -38,7 +38,7 @@ DROP TABLE IF EXISTS `shoes`;
 
 CREATE TABLE `shoes` (
   `ref` int(10) unsigned NOT NULL AUTO_INCREMENT,
-  `donorsid` smallint(5) unsigned NOT NULL,
+  `donorsemail` smallint(5) unsigned NOT NULL,
   `organizationid` smallint(5) unsigned DEFAULT NULL,
   `img` TEXT NULL,
   `gender` char(10) DEFAULT NULL,
@@ -47,7 +47,7 @@ CREATE TABLE `shoes` (
   `received_date` datetime DEFAULT NULL,
   `sent_date` datetime DEFAULT NULL,
   PRIMARY KEY (`ref`),
-  KEY `FK_shoes` (`donorsid`),
+  KEY `FK_shoes` (`donorsemail`),
   KEY `FK_organizations` (`organizationid`),
   CONSTRAINT `FK_organizations` FOREIGN KEY (`organizationid`) REFERENCES `organizations` (`id`) ON DELETE CASCADE ON UPDATE CASCADE,
   CONSTRAINT `FK_shoes` FOREIGN KEY (`donorsemail`) REFERENCES `donors` (`email`) ON DELETE CASCADE ON UPDATE CASCADE
