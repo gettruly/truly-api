@@ -48,8 +48,8 @@ exports.port = process.env.OPENSHIFT_NODEJS_PORT;
   if (typeof exports.port == "undefined") {
    // Log errors on OpenShift but continue w/ 127.0.0.1 - this
    // allows us to run/test the app locally.
-   console.warn('No OPENSHIFT_NODEJS_PORT var, using 5000');
-   exports.port = 8081;
+   exports.port = 5000;
+   console.warn('No OPENSHIFT_NODEJS_PORT var, using', exports.port);
   };
 
 exports.start = start;
